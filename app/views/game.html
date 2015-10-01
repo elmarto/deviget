@@ -1,0 +1,26 @@
+<div class="gameboard-wrapper">
+	<table class="gameboard" ng-if="!win">
+		<tr><td class="transparent" ng-repeat="slot in board.size[0] track by $index"><button class="btn btn-default" ng-click="actions.setDisc($index)">Insert</button></tr>
+		<tr ng-repeat="row in board.size">
+			<td ng-repeat="slot in row track by $index">
+				
+				<div 
+					class="slot" 
+					ng-class="{ 'player-one': slot.value === '1', 'player-two': slot.value === '2' }"
+				></div>
+
+			</td>
+		<tr>
+	</table>
+
+	<div ng-if="win">
+		<div class="jumbotron">
+		  <p class="lead">
+		  	<h1 class="text-center">Player {{playerId}} Win!</h1>
+		  </p>
+		  <p>
+		    <a class="btn btn-lg btn-success" ng-click="actions.restart()">Play Again!</a>
+		  </p>
+		</div>
+	</div>
+</div>
